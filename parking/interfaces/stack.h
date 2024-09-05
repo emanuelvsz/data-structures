@@ -15,5 +15,7 @@ int peek(Stack *s);
 int is_empty(Stack *s);
 int is_full(Stack *s);
 int size(Stack *s);
+int contains(Stack *s, int car_id);
+int get_car(Stack *s, int index);
 
 #endif

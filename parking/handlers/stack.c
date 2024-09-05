@@ -31,3 +31,17 @@ int is_full(Stack *s) {
 int size(Stack *s) {
     return s->top + 1;
 }
+
+int contains(Stack *s, int car_id) {
+    for (int i = 0; i <= s->top; i++) {
+        if (s->cars[i] == car_id) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int get_car(Stack *s, int index) {
+    if (index < 0 || index > s->top) return -1;
+    return s->cars[index];
+}

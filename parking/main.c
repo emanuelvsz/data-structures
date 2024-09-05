@@ -1,6 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "parking.h"
-#include "ui/display.c"
+#include "display.h"
+
+void show_menu()
+{
+    printf("=== Estacionamento ===\n");
+    printf("1. Estacionar carro\n");
+    printf("2. Retirar carro\n");
+    printf("3. Mostrar carros estacionados\n");
+    printf("4. Sair\n");
+    printf("======================\n");
+    printf("Escolha uma opção: ");
+}
 
 int main()
 {
@@ -9,42 +21,40 @@ int main()
 
     int option, car_id;
 
-    do
+    while (1)
     {
-        display_parking_status(&parking);
-        printf("1. Estacionar carro\n2. Retirar carro\n3. Sair\nEscolha uma opção: ");
+        show_menu();
         scanf("%d", &option);
 
         switch (option)
         {
         case 1:
-            printf("Digite o ID do carro: ");
+            printf("Digite o ID do carro para estacionar: ");
             scanf("%d", &car_id);
             if (!park_car(&parking, car_id))
             {
-                char choice;
-                scanf(" %c", &choice);
-                if (choice == 'S' || choice == 's')
-                {
-                    add_to_queue(&parking, car_id);
-                }
+                printf("Não foi possível estacionar o carro.\n");
             }
             break;
         case 2:
-            printf("Digite o ID do carro: ");
+            printf("Digite o ID do carro para retirar: ");
             scanf("%d", &car_id);
             if (retrieve_car(&parking, car_id) == -1)
             {
-                printf("Carro não encontrado nos becos.\n");
+                printf("Carro não encontrado.\n");
             }
             break;
         case 3:
-            printf("Saindo...\n");
+            display_parked_cars(&parking);
             break;
+        case 4:
+            printf("Saindo...\n");
+            return 0;
         default:
-            printf("Opção inválida.\n");
+            printf("Opção inválida!\n");
+            break;
         }
-    } while (option != 3);
+    }
 
     return 0;
 }

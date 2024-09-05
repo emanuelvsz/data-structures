@@ -1,5 +1,6 @@
 #include "parking.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void init_parking(Parking *p)
 {
@@ -12,6 +13,12 @@ void init_parking(Parking *p)
 
 int park_car(Parking *p, int car_id)
 {
+    if (contains(&p->beco1, car_id) || contains(&p->beco2, car_id))
+    {
+        printf("Carro %d já está no estacionamento.\n", car_id);
+        return 0;
+    }
+
     if (!is_full(&p->beco1))
     {
         push(&p->beco1, car_id);
@@ -34,13 +41,13 @@ int park_car(Parking *p, int car_id)
 int retrieve_car(Parking *p, int car_id)
 {
     int maneuvers = 0;
-    Stack *beco;
+    Stack *beco = NULL;
 
-    if (peek(&p->beco1) == car_id)
+    if (contains(&p->beco1, car_id))
     {
         beco = &p->beco1;
     }
-    else if (peek(&p->beco2) == car_id)
+    else if (contains(&p->beco2, car_id))
     {
         beco = &p->beco2;
     }
@@ -97,7 +104,7 @@ int remove_from_queue(Parking *p)
 
 void process_queue(Parking *p)
 {
-    while (p->queue_size > 0 && (is_empty(&p->beco1) || is_empty(&p->beco2)))
+    while (p->queue_size > 0 && (!is_full(&p->beco1) || !is_full(&p->beco2)))
     {
         int car_id = remove_from_queue(p);
         park_car(p, car_id);
