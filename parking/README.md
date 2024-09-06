@@ -60,8 +60,8 @@ Implementar um algoritmo que faça o gerenciamento de um estacionamento com 2 be
 
 ### <p id="used-libraries">Como executar?</p>
 
-* <stdio.h> -> A biblioteca fornece funções para realizar operações de entrada e saída em C.
-* <stdlib.h> -> A biblioteca oferece várias funções utilitárias, principalmente relacionadas à alocação de memória, controle de processos e conversão de tipos.
+* ``<stdio.h>`` -> A biblioteca fornece funções para realizar operações de entrada e saída em C.
+* ``<stdlib.h>`` -> A biblioteca oferece várias funções utilitárias, principalmente relacionadas à alocação de memória, controle de processos e conversão de tipos.
 
 ### <p id="how-execute">Como executar?</p>
 
