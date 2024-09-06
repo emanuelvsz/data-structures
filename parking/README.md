@@ -8,6 +8,7 @@
   * <a href="#functional-requirements">Requisitos funcionais</a>
 * <a href="#folder-structure">Estrutura de pastas</a>
 * <a href="#used-libraries">Bibliotecas utilizadas</a>
+* <a href="program-interfaces">Interfaces do programa</a>
 * <a href="#how-execute">Como executar?</a>
 
 
@@ -58,10 +59,53 @@ Implementar um algoritmo que faça o gerenciamento de um estacionamento com 2 be
     └── display.h
 ```
 
-### <p id="used-libraries">Como executar?</p>
+### <p id="used-libraries">Bibliotecas utilizadas</p>
 
 * ``<stdio.h>`` -> A biblioteca fornece funções para realizar operações de entrada e saída em C.
 * ``<stdlib.h>`` -> A biblioteca oferece várias funções utilitárias, principalmente relacionadas à alocação de memória, controle de processos e conversão de tipos.
+
+### <p id="program-interfaces">Interfaces do programa</a>
+
+#### ``parking.h``
+
+```
+typedef struct {
+    Stack beco1;
+    Stack beco2;
+    int wait_queue[MAX_QUEUE];
+    int queue_front;
+    int queue_rear;
+    int queue_size;
+} Parking;
+
+void init_parking(Parking *p);
+int park_car(Parking *p, int car_id);
+int retrieve_car(Parking *p, int car_id);
+int add_to_queue(Parking *p, int car_id);
+int remove_from_queue(Parking *p);
+void process_queue(Parking *p);
+void display_status(Parking *p);
+```
+
+#### ``stack.h``
+
+```
+typedef struct {
+    int cars[MAX_CARS];
+    int top;
+} Stack;
+
+void init_stack(Stack *s);
+int push(Stack *s, int car_id);
+int pop(Stack *s);
+int peek(Stack *s);
+int is_empty(Stack *s);
+int is_full(Stack *s);
+int size(Stack *s);
+int contains(Stack *s, int car_id);
+int get_car(Stack *s, int index);
+
+```
 
 ### <p id="how-execute">Como executar?</p>
 
