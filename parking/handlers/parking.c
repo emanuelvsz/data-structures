@@ -1,6 +1,8 @@
-#include "parking.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "parking.h"
+#include "display.h"
 
 void init_parking(Parking *p)
 {

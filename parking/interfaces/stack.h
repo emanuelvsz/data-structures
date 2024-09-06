@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
-
 #define MAX_CARS 10
+
 
 typedef struct {
     int cars[MAX_CARS];

@@ -1,9 +1,9 @@
 #ifndef PARKING_H
 #define PARKING_H
+#define MAX_QUEUE 10
 
 #include "stack.h"
 
-#define MAX_QUEUE 10
 
 typedef struct {
     Stack beco1;
